@@ -20,6 +20,7 @@ public class Game {
     private transient Integer tries;
     private transient boolean edit_mode = false;
     private transient Timer timer;
+    private final Random random = new Random();
 
     //create new game
     public Game(int size, int difficulty) {
@@ -246,7 +247,7 @@ public class Game {
         if (solutions.isEmpty()) return generateFields();
 
         //remove random numbers while there is one solution
-        Field[][] solution = solutions.get(new Random().nextInt(solutions.size()));
+       Field[][] solution = solutions.get(random.nextInt(solutions.size()));
         output = removedRandomNumber(solution);
 
         //append solution and set preNumber
