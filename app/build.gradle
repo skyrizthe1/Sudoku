@@ -6,6 +6,27 @@ android {
     compileSdkVersion 35
     buildToolsVersion "30.0.3"
 
+    packagingOptions {
+        resources {
+            pickFirst 'META-INF/androidx.coordinatorlayout_coordinatorlayout.version'
+        }
+    }
+    packagingOptions {
+        resources {
+            excludes += [
+                    "META-INF/androidx.coordinatorlayout_coordinatorlayout.version",
+                    "META-INF/androidx.appcompat_appcompat.version"
+            ]
+        }
+
+
+    lint {
+        abortOnError false
+        // optional: specify a baseline to ignore existing errors
+        baseline file("lint-baseline.xml")
+
+    } }
+
     defaultConfig {
         applicationId "de.dlyt.yanndroid.sudoku"
         minSdkVersion 26
@@ -37,6 +58,8 @@ configurations.all {
     exclude group: 'androidx.fragment', module: 'fragment'
     exclude group: 'androidx.customview', module: 'customview'
     exclude group: 'com.android.support', module: 'support-compat'
+    exclude group: 'androidx.coordinatorlayout', module: 'coordinatorlayout'
+
 }
 
 dependencies {
