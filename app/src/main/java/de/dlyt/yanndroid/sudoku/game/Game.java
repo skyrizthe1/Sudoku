@@ -32,7 +32,6 @@ public class Game {
         this.completed = false;
         this.fields = generateFields();
 
-        this.difficulty = difficulty;
     }
 
     //new empty game (make own)
